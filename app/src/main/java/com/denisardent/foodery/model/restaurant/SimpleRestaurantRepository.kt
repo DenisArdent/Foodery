@@ -23,11 +23,11 @@ class SimpleRestaurantRepository: RestaurantRepository {
     private val restaurantList = List(5) { index ->
             Restaurant(
                 name = types[index] + " " + names[index],
-                deliveryTime = (10..60 step 10).toList().random(),
+                deliveryTime = listOf(15, 20, 25 ,30,40).random(),
                 foodType = types[index],
                 rating = Random.nextDouble(3.0, 5.0).format(1),
                 restaurantLogo = logos[index],
-                discountPercentage = (10..50 step 10).toList().random()
+                discountPercentage = listOf(15,20,30, 35, 40, 50).random()
             )
     }
 
