@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Foodery</string>
+    <string name="login">Login</string>
+    <string name="access">Access account</string>
+    <string name="sign_in">Sign In</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="cart">Cart</string>
+    <string name="profile">Profile</string>
+    <string name="settings_button">settings button</string>
+    <string name="popular_restaurants">Popular restaurants</string>
+    <string name="location_home">Home</string>
+    <string name="error_please_wait">Please wait!</string>
+    <string name="having_acc">Don\'t have an account?</string>
+    <string name="invitation_to_register"><u>Register</u></string>
+    <string name="or_login_with_email">or Login with Email</string>
+    <string name="email">Email</string>
+    <string name="try_again">try again</string>
+    <string name="password">Password</string>
+    <string name="google_icon">google icon</string>
+</resources>
