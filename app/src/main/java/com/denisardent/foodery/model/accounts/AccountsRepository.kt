@@ -12,7 +12,7 @@ interface AccountsRepository {
     /**
      * try sign in user in system
      */
-    suspend fun signIn(email: String, password: String)
+    suspend fun signIn(email: String, password: String): Boolean
 
     /**
      * Creates new account
@@ -23,4 +23,9 @@ interface AccountsRepository {
      * Returns account flow with current account info
      */
     fun getAccountInfo(): Flow<Account?>
+
+    /**
+     * Log out user from system
+     */
+    fun logOut()
 }

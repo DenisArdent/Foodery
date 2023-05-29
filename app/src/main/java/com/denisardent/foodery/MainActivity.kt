@@ -2,47 +2,47 @@ package com.denisardent.foodery
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
+import androidx.navigation.NavGraph
 import androidx.navigation.fragment.NavHostFragment
 import com.denisardent.foodery.databinding.ActivityMainBinding
+import com.denisardent.foodery.utils.ViewModelFactory
 
 class MainActivity : AppCompatActivity() {
-    private var isSigned = false
-    private var navController: NavController? = null
-
-    private val viewModel: MainViewModel by viewModels()
-
+    private lateinit var navController: NavController
+    private val viewModel: MainViewModel by viewModels{ ViewModelFactory(applicationContext as App) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+
+        // showing splash screen until activity get information about
         installSplashScreen().apply {
-            setKeepOnScreenCondition{
-                viewModel.isInfoReceived.value ?: true
+            this.setKeepOnScreenCondition{
+                viewModel.isSignedIn.value?.isReturned ?:true
             }
         }
-        val binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
-        Log.d("ACTIVITY CREATED", "${binding.root::class.java}")
-
-        val destination = getDestination(isSigned)
-        Log.d("DESTINATION", "$destination")
-        val navHost  = supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
-        val navController = navHost.navController
-
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
+        navController = navHostFragment.navController
         val graph = navController.navInflater.inflate(R.navigation.main_nav_graph)
-        graph.setStartDestination(destination)
-
-        navController.graph = graph
+        viewModel.isSignedIn.observe(this){
+            if (!it.isReturned){
+                prepareNavGraph(graph, it.isSignedIn)
+                setContentView(binding.root)
+            }
+        }
     }
 
-    private fun getDestination(isSigned: Boolean): Int{
-        return if (isSigned){
-            R.id.tabsFragment
+    private fun prepareNavGraph(graph: NavGraph, isSignedIn: Boolean){
+        if (isSignedIn){
+            graph.setStartDestination(R.id.tabsFragment)
         } else{
-            R.id.signInFragment
+            graph.setStartDestination(R.id.signInFragment)
         }
+
+        navController.graph = graph
     }
 }

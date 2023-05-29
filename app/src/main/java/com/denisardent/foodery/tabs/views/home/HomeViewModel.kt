@@ -1,6 +1,9 @@
 package com.denisardent.foodery.tabs.views.home
 
+import android.provider.ContactsContract.CommonDataKinds.Email
+import android.util.Log
 import com.denisardent.foodery.model.*
+import com.denisardent.foodery.model.accounts.AccountsRepository
 import com.denisardent.foodery.model.restaurant.Restaurant
 import com.denisardent.foodery.model.restaurant.RestaurantRepository
 import com.denisardent.foodery.tabs.views.BaseViewModel
