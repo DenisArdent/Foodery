@@ -18,4 +18,5 @@
     <string name="try_again">try again</string>
     <string name="password">Password</string>
     <string name="google_icon">google icon</string>
+    <string name="log_out">Log Out</string>
 </resources>

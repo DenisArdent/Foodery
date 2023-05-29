@@ -9,9 +9,6 @@
         android:name="com.denisardent.foodery.tabs.TabsFragment"
         android:label="fragment_tabs"
         tools:layout="@layout/fragment_tabs" >
-        <argument
-            android:name="account_id"
-            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
@@ -20,6 +17,8 @@
         tools:layout="@layout/fragment_sign_in" >
         <action
             android:id="@+id/action_signInFragment_to_tabsFragment"
-            app:destination="@id/tabsFragment" />
+            app:destination="@id/tabsFragment"
+            app:popUpTo="@id/signInFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

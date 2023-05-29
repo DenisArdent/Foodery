@@ -85,7 +85,7 @@
         app:errorEnabled="true"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:counterEnabled="true"
-        app:counterMaxLength="15"
+        app:counterMaxLength="25"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Foodery.Button.Rounded"
 
         app:layout_constraintWidth_percent="0.872"
@@ -101,7 +101,7 @@
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
             android:inputType="textEmailAddress"
-            android:maxLength="15"
+            android:maxLength="25"
             android:maxLines="1"
             />
 
@@ -141,7 +141,7 @@
             android:imeOptions="actionDone"
             android:inputType="textPassword"
 
-            android:maxLength="15"
+            android:maxLength="20"
             android:maxLines="1"
             />
 

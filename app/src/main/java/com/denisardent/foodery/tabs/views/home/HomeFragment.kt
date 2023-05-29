@@ -13,11 +13,12 @@ import com.denisardent.foodery.databinding.FragmentHomeBinding
 import com.denisardent.foodery.model.ErrorResult
 import com.denisardent.foodery.model.restaurant.Restaurant
 import com.denisardent.foodery.model.SuccessResult
-import com.denisardent.foodery.tabs.views.ViewModelFactory
+import com.denisardent.foodery.tabs.views.BaseFragment
+import com.denisardent.foodery.utils.ViewModelFactory
 
-class HomeFragment: Fragment(R.layout.fragment_home) {
+class HomeFragment: BaseFragment(R.layout.fragment_home) {
 
-    private val viewModel: HomeViewModel by viewModels{ ViewModelFactory(requireContext().applicationContext as App) }
+    private val viewModel: HomeViewModel by viewModels{ ViewModelFactory(getAppContext()) }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

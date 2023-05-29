@@ -6,7 +6,7 @@
     app:startDestination="@id/infoProfileFragment">
     <fragment
         android:id="@+id/infoProfileFragment"
-        android:name="com.denisardent.foodery.tabs.views.InfoProfileFragment"
+        android:name="com.denisardent.foodery.tabs.views.infoprofile.InfoProfileFragment"
         android:label="fragment_info_profile"
         tools:layout="@layout/fragment_info_profile" />
 </navigation>

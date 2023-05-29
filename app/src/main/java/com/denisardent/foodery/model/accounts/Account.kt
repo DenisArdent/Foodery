@@ -5,10 +5,9 @@ package com.denisardent.foodery.model.accounts
  */
 
 data class Account(
-    val id: Int,
+    val id: Long,
     val email: String,
-    val phoneNumber: String,
+    val phoneNumber: String?,
     val username: String,
-    val password: String,
     val createdAt: Long
 )

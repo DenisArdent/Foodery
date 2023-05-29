@@ -1,9 +1,12 @@
 package com.denisardent.foodery.tabs.views
 
+import android.content.Context
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.denisardent.foodery.App
 import com.denisardent.foodery.model.ErrorResult
 import com.denisardent.foodery.model.Result
 import com.denisardent.foodery.model.SuccessResult
@@ -23,5 +26,4 @@ open class BaseViewModel: ViewModel() {
             }
         }
     }
-
 }

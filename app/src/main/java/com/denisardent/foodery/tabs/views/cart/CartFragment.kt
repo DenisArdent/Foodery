@@ -1,4 +1,4 @@
-package com.denisardent.foodery.tabs.views
+package com.denisardent.foodery.tabs.views.cart
 
 import androidx.fragment.app.Fragment
 import com.denisardent.foodery.R
