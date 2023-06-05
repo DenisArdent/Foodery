@@ -1,14 +1,14 @@
 package com.denisardent.foodery
 
 import android.app.Application
-import android.content.Context
-import android.database.sqlite.SQLiteDatabase
+import androidx.room.Room
 import com.denisardent.foodery.model.accounts.AccountsRepository
-import com.denisardent.foodery.model.accounts.SQLAccountsRepository
+import com.denisardent.foodery.model.accounts.room.RoomAccountsRepository
 import com.denisardent.foodery.model.restaurant.RestaurantRepository
-import com.denisardent.foodery.model.restaurant.SQLiteRestaurantRepository
+import com.denisardent.foodery.model.restaurant.room.RoomRestaurantRepository
+import com.denisardent.foodery.model.room.AppDatabase
 import com.denisardent.foodery.preferences.AppPreferences
-import com.denisardent.foodery.sqlite.AppSQLiteHelper
+import com.denisardent.foodery.preferences.AppSharedPreferences
 
 class App: Application() {
     lateinit var restaurantRepository: RestaurantRepository
@@ -20,8 +20,10 @@ class App: Application() {
     override fun onCreate() {
         super.onCreate()
         val appContext = applicationContext
-        val database = AppSQLiteHelper(appContext).writableDatabase
-        accountsRepository = SQLAccountsRepository(database, appPreferences)
-        restaurantRepository = SQLiteRestaurantRepository(database)
+        val roomDatabase =  Room.databaseBuilder(appContext, AppDatabase::class.java, "roomdatabase.db")
+            .createFromAsset("db_init.db")
+            .build()
+        accountsRepository = RoomAccountsRepository(roomDatabase.getAccountsDao(), appPreferences)
+        restaurantRepository = RoomRestaurantRepository(roomDatabase.getRestaurantsDao())
     }
 }

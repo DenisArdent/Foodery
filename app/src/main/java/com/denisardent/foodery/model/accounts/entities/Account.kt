@@ -1,4 +1,4 @@
-package com.denisardent.foodery.model.accounts
+package com.denisardent.foodery.model.accounts.entities
 
 /**
  * Data class which defines account's properties.

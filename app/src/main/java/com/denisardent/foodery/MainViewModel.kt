@@ -10,8 +10,8 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MainViewModel(val accountsRepository: AccountsRepository): ViewModel() {
-    private val _isSignedIn = MutableLiveData<State>()
-    val isSignedIn: LiveData<State> = _isSignedIn
+    private val _state = MutableLiveData<State>()
+    val state: LiveData<State> = _state
 
     init {
         viewModelScope.launch {
@@ -22,12 +22,12 @@ class MainViewModel(val accountsRepository: AccountsRepository): ViewModel() {
     private suspend fun load() {
         delay(1000)
         val data = accountsRepository.isSignedIn()
-        _isSignedIn.value = State(false, data)
-        Log.d("VM", "${_isSignedIn.value}")
+        _state.value = State(false, data)
+        Log.d("VM", "${_state.value}")
     }
 }
 
 data class State(
-    var isReturned: Boolean,
+    var isLoading: Boolean,
     var isSignedIn: Boolean
 )

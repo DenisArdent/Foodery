@@ -21,15 +21,15 @@ class MainActivity : AppCompatActivity() {
         // showing splash screen until activity get information about
         installSplashScreen().apply {
             this.setKeepOnScreenCondition{
-                viewModel.isSignedIn.value?.isReturned ?:true
+                viewModel.state.value?.isLoading ?:true
             }
         }
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
         navController = navHostFragment.navController
         val graph = navController.navInflater.inflate(R.navigation.main_nav_graph)
-        viewModel.isSignedIn.observe(this){
-            if (!it.isReturned){
+        viewModel.state.observe(this){
+            if (!it.isLoading){
                 prepareNavGraph(graph, it.isSignedIn)
                 setContentView(binding.root)
             }
@@ -42,7 +42,6 @@ class MainActivity : AppCompatActivity() {
         } else{
             graph.setStartDestination(R.id.signInFragment)
         }
-
         navController.graph = graph
     }
 }
