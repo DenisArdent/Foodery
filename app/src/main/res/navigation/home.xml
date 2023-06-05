@@ -9,5 +9,19 @@
         android:id="@+id/homeFragment"
         android:name="com.denisardent.foodery.tabs.views.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_restaurantFragment"
+            app:destination="@id/restaurantFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/restaurantFragment"
+        android:name="com.denisardent.foodery.tabs.views.home.restaurant.RestaurantFragment"
+        android:label="fragment_restaurant"
+        tools:layout="@layout/fragment_restaurant" >
+        <argument
+            android:name="restaurant_id"
+            app:argType="long" />
+    </fragment>
 </navigation>

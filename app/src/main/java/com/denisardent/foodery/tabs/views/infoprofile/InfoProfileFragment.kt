@@ -2,18 +2,18 @@ package com.denisardent.foodery.tabs.views.infoprofile
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navOptions
 import com.denisardent.foodery.R
 import com.denisardent.foodery.databinding.FragmentInfoProfileBinding
-import com.denisardent.foodery.tabs.views.BaseFragment
+import com.denisardent.foodery.utils.BaseFragment
 import com.denisardent.foodery.utils.ViewModelFactory
 
-class InfoProfileFragment:BaseFragment(R.layout.fragment_info_profile) {
+class InfoProfileFragment: BaseFragment(R.layout.fragment_info_profile) {
 
     private val viewModel: InfoProfileViewModel by viewModels { ViewModelFactory(getAppContext()) }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentInfoProfileBinding.bind(view)
@@ -30,5 +30,17 @@ class InfoProfileFragment:BaseFragment(R.layout.fragment_info_profile) {
                 }
             })
         }
+    }
+
+    override fun <T> onSuccessed(element: T) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onErrored(e: Exception) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPending() {
+        TODO("Not yet implemented")
     }
 }

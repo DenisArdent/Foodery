@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.denisardent.foodery.databinding.RestaurantBinding
-import com.denisardent.foodery.model.restaurant.Restaurant
+import com.denisardent.foodery.model.accounts.entities.Restaurant
 
 class RestaurantsAdapter(
     // adding listener for fragment

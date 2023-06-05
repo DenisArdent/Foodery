@@ -1,8 +1,7 @@
-package com.denisardent.foodery
+package com.denisardent.foodery.preferences
 
 import android.content.Context
 import android.util.Log
-import com.denisardent.foodery.preferences.AppPreferences
 import com.denisardent.foodery.preferences.AppPreferences.Companion.NO_ACCOUNT_ID
 
 class AppSharedPreferences(appContext: Context): AppPreferences{

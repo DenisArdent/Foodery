@@ -11,7 +11,8 @@
     <string name="popular_restaurants">Popular restaurants</string>
     <string name="location_home">Home</string>
     <string name="error_please_wait">Please wait!</string>
-    <string name="having_acc">Don\'t have an account?</string>
+    <string name="having_acc">Already have an account?</string>
+    <string name="not_having_acc">Don\'t have an account?</string>
     <string name="invitation_to_register"><u>Register</u></string>
     <string name="or_login_with_email">or Login with Email</string>
     <string name="email">Email</string>
@@ -19,4 +20,8 @@
     <string name="password">Password</string>
     <string name="google_icon">google icon</string>
     <string name="log_out">Log Out</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="username">Username</string>
+    <string name="invitation_to_login">Login</string>
+    <string name="more_info">More info</string>
 </resources>

@@ -4,43 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".authorization.signin.SignInFragment">
-
-    <LinearLayout
-        android:id="@+id/sign_in_loading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@id/not_having_acc_tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/login_email_tv">
-
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/sign_in_progress_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_gravity="center"
-            android:indeterminate="true" />
-
-        <TextView
-            android:id="@+id/sign_in_wait_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/error_please_wait"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
+    tools:context=".authorization.signup.SignUpFragment">
 
     <TextView
-        android:id="@+id/login_tv"
+        android:id="@+id/registration_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login"
+        android:text="@string/sign_up"
         android:textColor="@color/dark_primary"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -61,49 +31,10 @@
         android:text="@string/access"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_tv" />
-
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:icon="@drawable/ic_google_icon"
-        android:backgroundTint="@color/light_gray"
-        app:iconTint="@color/white"
-        app:iconTintMode="multiply"
-        app:iconPadding="0dp"
-        android:padding="0dp"
-        app:iconGravity="textStart"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Foodery.Button.Rounded"
-        style="?attr/materialIconButtonFilledStyle"
-
-        app:layout_constraintBottom_toTopOf="@+id/login_email_tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.083"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/access_registration_tv"
-        app:layout_constraintWidth_percent="0.395" />
+        app:layout_constraintTop_toBottomOf="@id/registration_tv" />
 
     <TextView
-        android:id="@+id/login_email_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textColor="@color/light_primary"
-        android:text="@string/or_login_with_email"
-        app:layout_constraintVertical_bias="0.31"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/sign_in_components"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="email_tv, email_text_field,password_tv,password_text_layout, sign_in_button"/>
-
-    <TextView
-        android:id="@+id/email_tv"
+        android:id="@+id/email_registration_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="14sp"
@@ -111,11 +42,11 @@
         android:textStyle="bold"
         android:text="@string/email"
         android:layout_marginBottom="10dp"
-        app:layout_constraintStart_toStartOf="@id/email_text_field"
-        app:layout_constraintBottom_toTopOf="@id/email_text_field"/>
+        app:layout_constraintStart_toStartOf="@id/email_registration_text_field"
+        app:layout_constraintBottom_toTopOf="@id/email_registration_text_field"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/email_text_field"
+        android:id="@+id/email_registration_text_field"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:errorEnabled="true"
@@ -125,14 +56,54 @@
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Foodery.Button.Rounded"
 
         app:layout_constraintWidth_percent="0.872"
-        app:layout_constraintVertical_bias="0.427"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/access_registration_tv"
+        app:layout_constraintBottom_toTopOf="@id/username_registration_text_field"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/email_edit_text"
+            android:id="@+id/email_registration_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:inputType="textEmailAddress"
+            android:maxLength="25"
+            android:maxLines="1"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/username_registration_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@color/dark_primary"
+        android:textStyle="bold"
+        android:text="@string/username"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintStart_toStartOf="@id/username_registration_text_field"
+        app:layout_constraintBottom_toTopOf="@id/username_registration_text_field"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/username_registration_text_field"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:counterEnabled="true"
+        app:counterMaxLength="25"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Foodery.Button.Rounded"
+
+        app:layout_constraintWidth_percent="0.872"
+        app:layout_constraintTop_toTopOf="@id/email_registration_text_field"
+        app:layout_constraintBottom_toBottomOf="@id/password_registration_text_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+    <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/username_registration_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
@@ -145,18 +116,19 @@
 
 
     <TextView
-        android:id="@+id/password_tv"
+        android:id="@+id/password_registration_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/password"
         android:textColor="@color/dark_primary"
         android:textSize="14sp"
+        android:layout_marginBottom="10dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/password_text_layout"
-        app:layout_constraintTop_toBottomOf="@+id/email_text_field" />
+        app:layout_constraintStart_toStartOf="@id/password_registration_text_layout"
+        app:layout_constraintBottom_toTopOf="@id/password_registration_text_layout" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/password_text_layout"
+        android:id="@+id/password_registration_text_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:errorEnabled="true"
@@ -165,13 +137,13 @@
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Foodery.Button.Rounded"
 
         app:layout_constraintWidth_percent="0.872"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@id/password_tv"
+        app:layout_constraintTop_toBottomOf="@id/username_registration_text_field"
+        app:layout_constraintBottom_toTopOf="@id/sign_up_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password_edit_text"
+            android:id="@+id/password_registration_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
@@ -185,12 +157,12 @@
 
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/sign_in_button"
+        android:id="@+id/sign_up_button"
         android:layout_width="327dp"
         android:layout_height="64dp"
         android:backgroundTint="@color/purple_primary"
         android:textColor="@color/white"
-        android:text="@string/sign_in"
+        android:text="@string/sign_up"
         app:layout_constraintVertical_bias="0.75"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Foodery.Button.Rounded"
         app:layout_constraintStart_toStartOf="parent"
@@ -204,9 +176,9 @@
         android:layout_height="wrap_content"
         android:textSize="14sp"
         android:textColor="@color/light_primary"
-        android:text="@string/not_having_acc"
+        android:text="@string/having_acc"
         app:layout_constraintVertical_bias="0.845"
-        app:layout_constraintEnd_toStartOf="@id/inv_registration_tv"
+        app:layout_constraintEnd_toStartOf="@id/inv_login_tv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -214,7 +186,7 @@
         android:layout_marginEnd="10dp"/>
 
     <TextView
-        android:id="@+id/inv_registration_tv"
+        android:id="@+id/inv_login_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="14sp"
@@ -222,7 +194,7 @@
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:text="@string/invitation_to_register"
+        android:text="@string/invitation_to_login"
         app:layout_constraintVertical_bias="0.845"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/not_having_acc_tv"
