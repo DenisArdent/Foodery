@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "ca2839bf8594ab9eff6076f11cd5e662",
+    "identityHash": "062b2f69adcb57b01576e18802adb160",
     "entities": [
       {
         "tableName": "accounts",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `email` TEXT NOT NULL COLLATE NOCASE, `username` TEXT NOT NULL, `password` TEXT NOT NULL, `created_at` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `email` TEXT NOT NULL COLLATE NOCASE, `username` TEXT NOT NULL, `hash` TEXT NOT NULL, `salt` TEXT NOT NULL DEFAULT '', `created_at` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -27,10 +27,17 @@
             "notNull": true
           },
           {
-            "fieldPath": "password",
-            "columnName": "password",
+            "fieldPath": "hash",
+            "columnName": "hash",
             "affinity": "TEXT",
             "notNull": true
+          },
+          {
+            "fieldPath": "salt",
+            "columnName": "salt",
+            "affinity": "TEXT",
+            "notNull": true,
+            "defaultValue": "''"
           },
           {
             "fieldPath": "createdAt",
@@ -107,12 +114,83 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "accounts_restaurants_liked",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`account_id` INTEGER NOT NULL, `restaurant_id` INTEGER NOT NULL, `is_liked` INTEGER NOT NULL, PRIMARY KEY(`account_id`, `restaurant_id`), FOREIGN KEY(`account_id`) REFERENCES `accounts`(`id`) ON UPDATE CASCADE ON DELETE CASCADE , FOREIGN KEY(`restaurant_id`) REFERENCES `restaurants`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "accountId",
+            "columnName": "account_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "restaurantId",
+            "columnName": "restaurant_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isLiked",
+            "columnName": "is_liked",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "account_id",
+            "restaurant_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_accounts_restaurants_liked_restaurant_id",
+            "unique": false,
+            "columnNames": [
+              "restaurant_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_accounts_restaurants_liked_restaurant_id` ON `${TABLE_NAME}` (`restaurant_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "accounts",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "account_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          },
+          {
+            "table": "restaurants",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "restaurant_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
       }
     ],
-    "views": [],
+    "views": [
+      {
+        "viewName": "account_liked_restaurants_view",
+        "createSql": "CREATE VIEW `${VIEW_NAME}` AS SELECT \n  accounts.id as account_id,  restaurants.id as restaurant_id,  IFNULL (accounts_restaurants_liked.is_liked, 0) as is_liked  FROM accounts  JOIN restaurants  LEFT JOIN accounts_restaurants_liked  ON accounts_restaurants_liked.account_id = accounts.id AND  accounts_restaurants_liked.restaurant_id = restaurants.id"
+      }
+    ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ca2839bf8594ab9eff6076f11cd5e662')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '062b2f69adcb57b01576e18802adb160')"
     ]
   }
 }

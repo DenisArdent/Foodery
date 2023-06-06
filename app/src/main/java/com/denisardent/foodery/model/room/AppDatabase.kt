@@ -1,5 +1,6 @@
 package com.denisardent.foodery.model.room
 
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.denisardent.foodery.model.accounts.room.AccountDbEntity
@@ -15,9 +16,12 @@ import com.denisardent.foodery.model.restaurant.room.views.AccountLikedRestauran
         RestaurantDbEntity::class,
         AccountRestaurantLikedDbEntity::class
     ],
-    version = 1,
+    version = 2,
     views = [
         AccountLikedRestaurantsView::class
+    ],
+    autoMigrations = [
+        AutoMigration(from = 1, to = 2, spec = AutoMigrationSpec1To2::class)
     ]
 )
 abstract class AppDatabase: RoomDatabase() {

@@ -1,13 +1,13 @@
 package com.denisardent.foodery.tabs.views.home
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.denisardent.foodery.model.*
 import com.denisardent.foodery.model.accounts.entities.Restaurant
 import com.denisardent.foodery.model.restaurant.RestaurantRepository
-import com.denisardent.foodery.model.Result
 import com.denisardent.foodery.model.accounts.AccountsRepository
-import com.denisardent.foodery.utils.*
+import com.denisardent.foodery.utils.base.BaseViewModel
+import com.denisardent.foodery.utils.base.MutableResultFlow
+import com.denisardent.foodery.utils.base.ResultFlow
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 

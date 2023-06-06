@@ -1,4 +1,4 @@
-package com.denisardent.foodery.utils
+package com.denisardent.foodery.utils.base
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

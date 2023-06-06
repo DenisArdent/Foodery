@@ -4,5 +4,6 @@ import androidx.room.PrimaryKey
 
 data class AccountSignInTuple(
     val id: Long,
-    val password: String
+    val hash: String,
+    val salt: String
 )

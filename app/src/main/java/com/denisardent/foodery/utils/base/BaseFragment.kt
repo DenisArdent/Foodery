@@ -1,7 +1,5 @@
-package com.denisardent.foodery.utils
+package com.denisardent.foodery.utils.base
 
-import android.content.Context
-import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
