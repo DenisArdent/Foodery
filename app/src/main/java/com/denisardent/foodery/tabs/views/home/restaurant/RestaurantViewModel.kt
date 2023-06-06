@@ -8,9 +8,8 @@ import com.denisardent.foodery.model.SuccessResult
 import com.denisardent.foodery.model.accounts.AccountsRepository
 import com.denisardent.foodery.model.accounts.entities.Restaurant
 import com.denisardent.foodery.model.restaurant.RestaurantRepository
-import com.denisardent.foodery.model.restaurant.room.RestaurantsDao
-import com.denisardent.foodery.utils.MutableResultFlow
-import com.denisardent.foodery.utils.ResultFlow
+import com.denisardent.foodery.utils.base.MutableResultFlow
+import com.denisardent.foodery.utils.base.ResultFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest

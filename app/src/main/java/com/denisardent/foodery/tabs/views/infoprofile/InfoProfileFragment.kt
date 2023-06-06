@@ -7,7 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navOptions
 import com.denisardent.foodery.R
 import com.denisardent.foodery.databinding.FragmentInfoProfileBinding
-import com.denisardent.foodery.utils.BaseFragment
+import com.denisardent.foodery.utils.base.BaseFragment
 import com.denisardent.foodery.utils.ViewModelFactory
 
 class InfoProfileFragment: BaseFragment(R.layout.fragment_info_profile) {

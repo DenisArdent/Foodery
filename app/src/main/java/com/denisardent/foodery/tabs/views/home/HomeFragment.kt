@@ -1,23 +1,15 @@
 package com.denisardent.foodery.tabs.views.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.denisardent.foodery.R
 import com.denisardent.foodery.databinding.FragmentHomeBinding
-import com.denisardent.foodery.model.ErrorResult
 import com.denisardent.foodery.model.accounts.entities.Restaurant
-import com.denisardent.foodery.model.SuccessResult
-import com.denisardent.foodery.utils.BaseFragment
+import com.denisardent.foodery.utils.base.BaseFragment
 import com.denisardent.foodery.utils.ViewModelFactory
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 class HomeFragment: BaseFragment(R.layout.fragment_home) {
 

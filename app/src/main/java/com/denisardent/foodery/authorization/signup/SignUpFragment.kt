@@ -9,7 +9,7 @@ import androidx.navigation.fragment.navArgs
 import com.denisardent.foodery.R
 import com.denisardent.foodery.databinding.FragmentSignUpBinding
 import com.denisardent.foodery.model.accounts.entities.SignUpData
-import com.denisardent.foodery.utils.BaseFragment
+import com.denisardent.foodery.utils.base.BaseFragment
 import com.denisardent.foodery.utils.ViewModelFactory
 
 class SignUpFragment: BaseFragment(R.layout.fragment_sign_up) {

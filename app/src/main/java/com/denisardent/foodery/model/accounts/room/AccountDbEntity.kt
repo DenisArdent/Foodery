@@ -6,6 +6,7 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.denisardent.foodery.model.accounts.entities.Account
 import com.denisardent.foodery.model.accounts.entities.SignUpData
+import com.denisardent.foodery.utils.security.SecurityUtils
 
 @Entity(
     tableName = "accounts",
@@ -18,7 +19,8 @@ data class AccountDbEntity(
     @PrimaryKey(autoGenerate = true) val id: Long,
     @ColumnInfo(collate = ColumnInfo.NOCASE) val email: String,
     val username: String,
-    val password: String,
+    val hash: String,
+    @ColumnInfo(defaultValue = "") val salt: String,
     @ColumnInfo(name = "created_at") val createdAt: Long
 ) {
     fun mapToAccount(): Account =
@@ -31,13 +33,18 @@ data class AccountDbEntity(
         )
 
     companion object{
-        fun mapFromSignUpData(signUpData: SignUpData): AccountDbEntity =
-            AccountDbEntity(
+        fun mapFromSignUpData(signUpData: SignUpData, securityUtils: SecurityUtils): AccountDbEntity{
+            val saltBytes = securityUtils.generateSalt()
+            val hashBytes = securityUtils.passwordToHash(signUpData.password.toCharArray(), saltBytes)
+            signUpData.password = "*"
+            return AccountDbEntity(
                 id = 0,
                 email = signUpData.email,
                 username = signUpData.username,
-                password = signUpData.password,
+                hash = securityUtils.bytesToString(hashBytes),
+                salt = securityUtils.bytesToString(saltBytes),
                 createdAt = System.currentTimeMillis()
             )
+        }
     }
 }

@@ -13,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.denisardent.foodery.R
 import com.denisardent.foodery.utils.ViewModelFactory
 import com.denisardent.foodery.databinding.FragmentSignInBinding
-import com.denisardent.foodery.utils.BaseFragment
+import com.denisardent.foodery.utils.base.BaseFragment
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
 

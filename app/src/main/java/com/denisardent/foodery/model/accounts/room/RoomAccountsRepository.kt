@@ -8,6 +8,7 @@ import com.denisardent.foodery.model.accounts.AccountsRepository
 import com.denisardent.foodery.model.accounts.entities.Account
 import com.denisardent.foodery.model.accounts.entities.SignUpData
 import com.denisardent.foodery.preferences.AppPreferences
+import com.denisardent.foodery.utils.security.SecurityUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -15,7 +16,8 @@ import kotlinx.coroutines.withContext
 
 class RoomAccountsRepository(
     val accountsDao: AccountsDao,
-    val appPreferences: AppPreferences
+    val appPreferences: AppPreferences,
+    val securityUtils: SecurityUtils
 ): AccountsRepository {
 
     override fun getCurrentId(): Long {
@@ -34,7 +36,7 @@ class RoomAccountsRepository(
     }
 
     override suspend fun signUp(signUpData: SignUpData) {
-        accountsDao.createAccount(AccountDbEntity.mapFromSignUpData(signUpData))
+        accountsDao.createAccount(AccountDbEntity.mapFromSignUpData(signUpData, securityUtils))
     }
 
     override suspend fun getAccount(accountId: Long): Account? {
@@ -43,7 +45,10 @@ class RoomAccountsRepository(
 
     private suspend fun findAccountIdByEmailAndPassword(email: String, password: String): Long {
         val tuple = accountsDao.findByEmail(email) ?:throw AuthException()
-        if (tuple.password != password) throw AuthException()
+        val saltString = tuple.salt
+        val hashBytes = securityUtils.passwordToHash(password.toCharArray(), securityUtils.stringToBytes(saltString))
+        val hashString = securityUtils.bytesToString(hashBytes)
+        if (tuple.hash != hashString) throw AuthException()
         return tuple.id
     }
 
