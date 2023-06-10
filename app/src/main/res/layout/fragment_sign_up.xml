@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".authorization.signup.SignUpFragment">
+    tools:context=".screens.authorization.signup.SignUpFragment">
 
     <TextView
         android:id="@+id/registration_tv"
@@ -28,10 +28,18 @@
         android:textColor="@color/light_primary"
         android:textStyle="bold"
         android:layout_marginTop="8dp"
-        android:text="@string/access"
+        android:text="@string/create_account"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/registration_tv" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/registration_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="email_registration_tv, email_registration_text_field, username_registration_tv,
+            username_registration_text_field, password_registration_tv, password_registration_text_layout,
+            sign_up_button"/>
 
     <TextView
         android:id="@+id/email_registration_tv"
@@ -96,8 +104,8 @@
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Foodery.Button.Rounded"
 
         app:layout_constraintWidth_percent="0.872"
-        app:layout_constraintTop_toTopOf="@id/email_registration_text_field"
-        app:layout_constraintBottom_toBottomOf="@id/password_registration_text_layout"
+        app:layout_constraintTop_toBottomOf="@id/email_registration_text_field"
+        app:layout_constraintBottom_toTopOf="@id/password_registration_text_layout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -160,7 +168,6 @@
         android:id="@+id/sign_up_button"
         android:layout_width="327dp"
         android:layout_height="64dp"
-        android:backgroundTint="@color/purple_primary"
         android:textColor="@color/white"
         android:text="@string/sign_up"
         app:layout_constraintVertical_bias="0.75"

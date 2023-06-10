@@ -3,12 +3,12 @@ package com.denisardent.foodery.utils
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.denisardent.foodery.App
-import com.denisardent.foodery.MainViewModel
-import com.denisardent.foodery.authorization.signin.SignInViewModel
-import com.denisardent.foodery.authorization.signup.SignUpViewModel
-import com.denisardent.foodery.tabs.views.home.HomeViewModel
-import com.denisardent.foodery.tabs.views.home.restaurant.RestaurantViewModel
-import com.denisardent.foodery.tabs.views.infoprofile.InfoProfileViewModel
+import com.denisardent.foodery.screens.MainViewModel
+import com.denisardent.foodery.screens.authorization.signin.SignInViewModel
+import com.denisardent.foodery.screens.authorization.signup.SignUpViewModel
+import com.denisardent.foodery.screens.tabs.views.home.HomeViewModel
+import com.denisardent.foodery.screens.tabs.views.home.restaurant.RestaurantViewModel
+import com.denisardent.foodery.screens.tabs.views.infoprofile.InfoProfileViewModel
 
 class ViewModelFactory(
     private val app: App

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".tabs.views.home.restaurant.RestaurantFragment">
+    tools:context=".screens.tabs.views.home.restaurant.RestaurantFragment">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/back_button"

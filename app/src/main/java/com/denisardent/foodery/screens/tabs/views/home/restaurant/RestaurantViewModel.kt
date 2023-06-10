@@ -1,4 +1,4 @@
-package com.denisardent.foodery.tabs.views.home.restaurant
+package com.denisardent.foodery.screens.tabs.views.home.restaurant
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

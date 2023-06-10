@@ -1,4 +1,4 @@
-package com.denisardent.foodery.tabs
+package com.denisardent.foodery.screens.tabs
 
 import android.os.Bundle
 import android.util.Log

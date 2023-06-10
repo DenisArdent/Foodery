@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".authorization.signin.SignInFragment">
+    tools:context=".screens.authorization.signin.SignInFragment">
 
     <LinearLayout
         android:id="@+id/sign_in_loading"
@@ -12,10 +12,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@id/not_having_acc_tv"
+
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/login_email_tv">
+        app:layout_constraintTop_toBottomOf="@+id/sign_in_button">
 
         <com.google.android.material.progressindicator.CircularProgressIndicator
             android:id="@+id/sign_in_progress_bar"
@@ -96,11 +97,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/sign_in_components"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="email_tv, email_text_field,password_tv,password_text_layout, sign_in_button"/>
 
     <TextView
         android:id="@+id/email_tv"
@@ -188,15 +184,21 @@
         android:id="@+id/sign_in_button"
         android:layout_width="327dp"
         android:layout_height="64dp"
-        android:backgroundTint="@color/purple_primary"
-        android:textColor="@color/white"
         android:text="@string/sign_in"
-        app:layout_constraintVertical_bias="0.75"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Foodery.Button.Rounded"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintVertical_bias="0.75"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Foodery.Button.Rounded" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/bottom_text_components"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="not_having_acc_tv, inv_registration_tv"/>
+
 
     <TextView
         android:id="@+id/not_having_acc_tv"

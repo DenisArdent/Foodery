@@ -1,4 +1,4 @@
-package com.denisardent.foodery.tabs.views.home.restaurant
+package com.denisardent.foodery.screens.tabs.views.home.restaurant
 
 import android.os.Bundle
 import android.view.View
@@ -38,7 +38,7 @@ class RestaurantFragment: BaseFragment(R.layout.fragment_restaurant) {
         }
     }
 
-    override fun <T> onSuccessed(element: T) {
+    override fun <T> onSucceed(element: T) {
         val restaurant = element as Restaurant
         binding.likeRestaurantCheckbox.isEnabled = true
         binding.likeRestaurantCheckbox.isChecked = restaurant.isLiked

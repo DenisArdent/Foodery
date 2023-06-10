@@ -6,13 +6,13 @@
     app:startDestination="@id/signInFragment">
     <fragment
         android:id="@+id/tabsFragment"
-        android:name="com.denisardent.foodery.tabs.TabsFragment"
+        android:name="com.denisardent.foodery.screens.tabs.TabsFragment"
         android:label="fragment_tabs"
         tools:layout="@layout/fragment_tabs" >
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.denisardent.foodery.authorization.signin.SignInFragment"
+        android:name="com.denisardent.foodery.screens.authorization.signin.SignInFragment"
         android:label="fragment_sign_in"
         tools:layout="@layout/fragment_sign_in" >
         <action
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.denisardent.foodery.authorization.signup.SignUpFragment"
+        android:name="com.denisardent.foodery.screens.authorization.signup.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <argument

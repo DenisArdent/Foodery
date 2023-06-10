@@ -17,7 +17,7 @@ abstract class BaseFragment(layoutId: Int): Fragment(layoutId) {
                 viewModelFlow.collectLatest {result->
                     when (result){
                         is SuccessResult -> {
-                            onSuccessed(result.data)
+                            onSucceed(result.data)
                         }
                         is ErrorResult -> {
                             onErrored(result.exception)
@@ -35,7 +35,7 @@ abstract class BaseFragment(layoutId: Int): Fragment(layoutId) {
         return requireContext().applicationContext as App
     }
 
-    abstract fun <T> onSuccessed(element: T)
+    abstract fun <T> onSucceed(element: T)
 
     abstract fun onErrored(e: Exception)
 

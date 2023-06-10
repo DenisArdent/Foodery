@@ -1,4 +1,4 @@
-package com.denisardent.foodery.tabs.views.search
+package com.denisardent.foodery.screens.tabs.views.search
 
 import androidx.fragment.app.Fragment
 import com.denisardent.foodery.R

@@ -13,6 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 class RoomAccountsRepository(
     val accountsDao: AccountsDao,
@@ -36,6 +37,7 @@ class RoomAccountsRepository(
     }
 
     override suspend fun signUp(signUpData: SignUpData) {
+        delay(1000)
         accountsDao.createAccount(AccountDbEntity.mapFromSignUpData(signUpData, securityUtils))
     }
 

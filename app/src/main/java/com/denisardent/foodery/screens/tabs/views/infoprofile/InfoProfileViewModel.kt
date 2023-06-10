@@ -1,4 +1,4 @@
-package com.denisardent.foodery.tabs.views.infoprofile
+package com.denisardent.foodery.screens.tabs.views.infoprofile
 
 import com.denisardent.foodery.model.accounts.AccountsRepository
 import com.denisardent.foodery.utils.base.BaseViewModel

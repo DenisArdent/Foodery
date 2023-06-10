@@ -6,7 +6,7 @@
     app:startDestination="@id/cartFragment2">
     <fragment
         android:id="@+id/cartFragment2"
-        android:name="com.denisardent.foodery.tabs.views.cart.CartFragment"
+        android:name="com.denisardent.foodery.screens.tabs.views.cart.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" />
 </navigation>

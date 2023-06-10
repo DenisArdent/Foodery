@@ -1,4 +1,4 @@
-package com.denisardent.foodery.tabs.views.infoprofile
+package com.denisardent.foodery.screens.tabs.views.infoprofile
 
 import android.os.Bundle
 import android.view.View
@@ -32,7 +32,7 @@ class InfoProfileFragment: BaseFragment(R.layout.fragment_info_profile) {
         }
     }
 
-    override fun <T> onSuccessed(element: T) {
+    override fun <T> onSucceed(element: T) {
         TODO("Not yet implemented")
     }
 

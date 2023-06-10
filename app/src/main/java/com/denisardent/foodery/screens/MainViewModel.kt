@@ -1,4 +1,4 @@
-package com.denisardent.foodery
+package com.denisardent.foodery.screens
 
 import android.util.Log
 import androidx.lifecycle.LiveData

@@ -1,4 +1,4 @@
-package com.denisardent.foodery.authorization.signin
+package com.denisardent.foodery.screens.authorization.signin
 
 import android.os.Bundle
 import android.view.View
@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.denisardent.foodery.R
+
 import com.denisardent.foodery.utils.ViewModelFactory
 import com.denisardent.foodery.databinding.FragmentSignInBinding
 import com.denisardent.foodery.utils.base.BaseFragment
@@ -30,32 +31,12 @@ class SignInFragment: BaseFragment(R.layout.fragment_sign_in) {
 
         binding = FragmentSignInBinding.bind(view)
 
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED){
-                viewModel.isLoading.collect{
-                    if (it){
-                        binding.signInComponents.visibility = View.INVISIBLE
-/*                        binding.emailTv.visibility = View.INVISIBLE
-                        binding.emailTextField.visibility = View.INVISIBLE
-                        binding.passwordTv.visibility = View.INVISIBLE
-                        binding.passwordTextLayout.visibility = View.INVISIBLE*/
-                        binding.signInLoading.visibility = View.VISIBLE
-                    } else {
-                        binding.signInComponents.visibility = View.VISIBLE
-/*                        binding.emailTextField.visibility = View.VISIBLE
-                        binding.passwordTv.visibility = View.VISIBLE
-                        binding.passwordTextLayout.visibility = View.VISIBLE*/
-                        binding.signInLoading.visibility = View.GONE
-                    }
-                }
-            }
-        }
+        handleResult(viewModel.signInState)
 
         viewModel.signInLiveData.observe(viewLifecycleOwner){
             val vmValue = viewModel.signInLiveData.value
             if (vmValue != false){
-                val direction = SignInFragmentDirections.actionSignInFragmentToTabsFragment()
-                childNavController.navigate(direction)
+
             } else {
                 Toast.makeText(context, "Wrong data", Toast.LENGTH_SHORT).show()
             }
@@ -86,7 +67,8 @@ class SignInFragment: BaseFragment(R.layout.fragment_sign_in) {
         }
 
         binding.invRegistrationTv.setOnClickListener {
-            val direction = SignInFragmentDirections.actionSignInFragmentToSignUpFragment(binding.emailEditText.text.toString())
+            val direction =
+                SignInFragmentDirections.actionSignInFragmentToSignUpFragment(binding.emailEditText.text.toString())
             childNavController.navigate(direction)
         }
 
@@ -127,15 +109,36 @@ class SignInFragment: BaseFragment(R.layout.fragment_sign_in) {
         }
     }
 
-    override fun <T> onSuccessed(element: T) {
-        TODO("Not yet implemented")
+    override fun <T> onSucceed(element: T) {
+        val result = element as Boolean
+        if (result){
+            val direction = SignInFragmentDirections.actionSignInFragmentToTabsFragment()
+            findNavController().navigate(direction)
+        }
     }
 
     override fun onErrored(e: Exception) {
-        TODO("Not yet implemented")
+        binding.passwordTextLayout.error = "Wrong email or password"
+        binding.emailTextField.error = "Wrong email or password"
+        changeViewsStatus(true)
     }
 
     override fun onPending() {
-        TODO("Not yet implemented")
+        binding.signInLoading
+        changeViewsStatus(false)
+    }
+
+    private fun changeViewsStatus(state: Boolean){
+        if (state){
+            binding.signInLoading.visibility = View.GONE
+            binding.bottomTextComponents.visibility = View.VISIBLE
+        } else{
+            binding.signInLoading.visibility = View.VISIBLE
+            binding.bottomTextComponents.visibility = View.INVISIBLE
+        }
+
+        binding.emailTextField.isEnabled = state
+        binding.passwordTextLayout.isEnabled = state
+        binding.signInButton.isEnabled = state
     }
 }

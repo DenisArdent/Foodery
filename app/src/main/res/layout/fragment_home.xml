@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/extra_light"
-    tools:context=".tabs.views.home.HomeFragment">
+    tools:context=".screens.tabs.views.home.HomeFragment">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/top_horizontal_guideline"

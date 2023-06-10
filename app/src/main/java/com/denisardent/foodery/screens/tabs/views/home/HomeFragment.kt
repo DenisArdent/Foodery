@@ -1,4 +1,4 @@
-package com.denisardent.foodery.tabs.views.home
+package com.denisardent.foodery.screens.tabs.views.home
 
 import android.os.Bundle
 import android.view.View
@@ -41,7 +41,7 @@ class HomeFragment: BaseFragment(R.layout.fragment_home) {
         binding.restaurantsRv.layoutManager = LinearLayoutManager(context)
     }
 
-    override fun <T> onSuccessed(element: T) {
+    override fun <T> onSucceed(element: T) {
         val restaurantsList = element as List<Restaurant>
         binding.loading.visibility = View.GONE
         restaurantsAdapter.restaurants = restaurantsList
