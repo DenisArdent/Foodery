@@ -1,24 +1,27 @@
 package com.denisardent.foodery.screens
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph
 import androidx.navigation.fragment.NavHostFragment
-import com.denisardent.foodery.App
 import com.denisardent.foodery.R
 import com.denisardent.foodery.databinding.ActivityMainBinding
-import com.denisardent.foodery.utils.ViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainActivity : AppCompatActivity() {
+@AndroidEntryPoint
+class MainActivity: AppCompatActivity() {
+
     private lateinit var navController: NavController
-    private val viewModel: MainViewModel by viewModels{ ViewModelFactory(applicationContext as App) }
+
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // showing splash screen until activity get information about user status
         installSplashScreen().apply {

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="add_in_cart">Add in cart</string>
+    <string name="restaurant_image">Restaurant image</string>
+    <string name="there_is_some_issue">"There is some issue %1$s"</string>
+</resources>

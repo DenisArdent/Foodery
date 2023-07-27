@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.denisardent.home.presentation.home.restaurant.RestaurantFragment">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/back_button"
+        android:layout_height="58dp"
+        android:layout_width="48dp"
+        app:icon="@drawable/ic_back"
+        android:backgroundTint="@color/light_gray"
+        app:iconTint="@color/dark_primary"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Foodery.Button.Rounded"
+
+        app:iconPadding="0dp"
+        app:iconGravity="textStart"
+        app:layout_constraintVertical_bias="0.03"
+        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <FrameLayout
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+
+        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintBottom_toBottomOf="@id/back_button"
+        android:background="@drawable/rounded_shape"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/back_button">
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:id="@+id/like_restaurant_checkbox"
+
+            app:useMaterialThemeColors="false"
+
+            android:button="@drawable/like_selector" />
+
+    </FrameLayout>
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/main_components"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="main_restaurant_iv, main_restaurant_name, main_clock_iv, main_delivering_time_tv,
+         main_star_iv, main_rating, main_restaurant_type_tv, main_restaurant_more_info"/>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/main_restaurant_iv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="5dp"
+        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintWidth_percent="0.95"
+        app:shapeAppearanceOverlay="@style/roundedImageView"
+        app:srcCompat="@drawable/rectangle_11" />
+
+    <TextView
+        android:id="@+id/main_restaurant_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/dark_primary"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+
+        app:layout_constraintTop_toBottomOf="@id/main_restaurant_iv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Restaurant Name" />
+
+    <ImageView
+        android:id="@+id/main_star_iv"
+        android:layout_width="12dp"
+        android:layout_height="13dp"
+        android:src="@drawable/ic_star"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/main_restaurant_name"
+        app:layout_constraintTop_toBottomOf="@+id/main_restaurant_name"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/main_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:textColor="@color/dark_primary"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/main_star_iv"
+        app:layout_constraintStart_toEndOf="@id/main_star_iv"
+        app:layout_constraintTop_toTopOf="@id/main_star_iv"
+        tools:text="4.5" />
+
+    <TextView
+        android:id="@+id/main_restaurant_type_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:textColor="@color/light_primary"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/main_rating"
+        app:layout_constraintStart_toEndOf="@id/main_rating"
+        app:layout_constraintTop_toTopOf="@id/main_rating"
+        tools:text="Some food" />
+
+    <ImageView
+        android:id="@+id/main_clock_iv"
+        android:layout_width="12dp"
+        android:layout_height="13dp"
+        android:layout_marginHorizontal="5dp"
+        android:src="@drawable/ic_clock"
+        app:layout_constraintBottom_toBottomOf="@id/main_restaurant_type_tv"
+        app:layout_constraintStart_toEndOf="@id/main_restaurant_type_tv"
+        app:layout_constraintTop_toTopOf="@id/main_restaurant_type_tv"
+        android:importantForAccessibility="no" />
+
+    <TextView
+        android:id="@+id/main_delivering_time_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/light_primary"
+        android:layout_marginHorizontal="5dp"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/main_rating"
+        app:layout_constraintStart_toEndOf="@id/main_clock_iv"
+        app:layout_constraintTop_toTopOf="@id/main_rating"
+        tools:text="20 min" />
+
+    <TextView
+        android:id="@+id/main_restaurant_more_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/purple_primary"
+        android:text="@string/more_info"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:layout_marginEnd="7dp"
+        app:layout_constraintBottom_toBottomOf="@+id/main_restaurant_name"
+        app:layout_constraintEnd_toEndOf="@id/main_restaurant_iv" />
+
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/main_star_iv"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/item_dishinfo" />
+
+    <LinearLayout
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:indeterminate="true"
+
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/wait_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/error_please_wait"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
