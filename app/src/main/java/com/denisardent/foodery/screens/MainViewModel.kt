@@ -1,15 +1,17 @@
 package com.denisardent.foodery.screens
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.denisardent.foodery.model.accounts.AccountsRepository
+import com.denisardent.domain.usecases.IsSignedInUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainViewModel(val accountsRepository: AccountsRepository): ViewModel() {
+@HiltViewModel
+class MainViewModel @Inject constructor(private val isSignedInUseCase: IsSignedInUseCase): ViewModel() {
     private val _state = MutableLiveData<State>()
     val state: LiveData<State> = _state
 
@@ -21,9 +23,8 @@ class MainViewModel(val accountsRepository: AccountsRepository): ViewModel() {
 
     private suspend fun load() {
         delay(1000)
-        val data = accountsRepository.isSignedIn()
+        val data = isSignedInUseCase()
         _state.value = State(false, data)
-        Log.d("VM", "${_state.value}")
     }
 }
 
