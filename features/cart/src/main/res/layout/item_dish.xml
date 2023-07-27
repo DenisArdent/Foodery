@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_dish"
+    android:layout_marginTop="10dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/dish_iv"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:src="@drawable/ic_location"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Foodery.Button.Rounded"/>
+
+    <TextView
+        android:id="@+id/dish_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginStart="6dp"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/dish_iv"
+        app:layout_constraintTop_toTopOf="@+id/dish_iv"
+        app:layout_constraintBottom_toTopOf="@+id/dish_cost"
+        tools:text="Рыба с овощами и рисом" />
+
+    <TextView
+        android:id="@+id/dish_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/dish_iv"
+        app:layout_constraintStart_toStartOf="@+id/dish_name"
+        app:layout_constraintTop_toBottomOf="@id/dish_name"
+        tools:text="799₽" />
+
+    <TextView
+        android:id="@+id/dish_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text = "560г"
+        android:textSize="14sp"
+
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@id/dish_cost"
+        app:layout_constraintTop_toTopOf="@id/dish_cost"
+        app:layout_constraintBottom_toBottomOf="@id/dish_cost"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        app:layout_constraintBottom_toBottomOf="@+id/dish_iv"
+        android:background="@color/light_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dish_iv">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_min"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:backgroundTint="@color/light_gray"
+            android:padding="0dp"
+            app:icon="@drawable/ic_remove"
+            app:iconPadding="0dp"
+            app:iconTintMode="multiply"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toStartOf="@id/button_plus"
+            app:layout_constraintStart_toEndOf="@id/button_min"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_plus"
+            android:layout_width="24dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/light_gray"
+            app:iconPadding="0dp"
+            android:padding="0dp"
+            app:icon="@drawable/ic_add"
+            app:iconTintMode="multiply"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
