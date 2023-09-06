@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.denisardent.common.entities.DishItem
 import com.denisardent.domain.usecases.ChangeDishQuantityUseCase
+import com.denisardent.domain.usecases.DeleteDishFromCartUseCase
 import com.denisardent.domain.usecases.GetCurrentIdUseCase
 import com.denisardent.domain.usecases.GetDishesListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,7 +19,8 @@ import javax.inject.Inject
 class CartViewModel @Inject constructor(
     private val getCurrentIdUseCase: GetCurrentIdUseCase,
     private val getDishesListUseCase: GetDishesListUseCase,
-    private val changeDishQuantityUseCase: ChangeDishQuantityUseCase
+    private val changeDishQuantityUseCase: ChangeDishQuantityUseCase,
+    private val deleteDishFromCartUseCase: DeleteDishFromCartUseCase
 ): ViewModel() {
 
     private val _cartState: MutableStateFlow<List<DishItem>> = MutableStateFlow(emptyList())
@@ -35,6 +37,12 @@ class CartViewModel @Inject constructor(
     fun changeDishItemQuantity(dishId: Int, increasing: Boolean){
         viewModelScope.launch {
             changeDishQuantityUseCase(getCurrentIdUseCase(), dishId, increasing)
+        }
+    }
+
+    fun deleteItemFromCart(dishId: Int){
+        viewModelScope.launch {
+            deleteDishFromCartUseCase(getCurrentIdUseCase(), dishId)
         }
     }
 }

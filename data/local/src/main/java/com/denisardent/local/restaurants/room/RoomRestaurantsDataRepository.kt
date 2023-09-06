@@ -1,6 +1,7 @@
 package com.denisardent.local.restaurants.room
 
 import com.denisardent.common.entities.Restaurant
+
 import com.denisardent.local.restaurants.RestaurantsDataRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -8,8 +9,8 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class RoomRestaurantsDataRepository @Inject constructor(
-    private val restaurantsDao: RestaurantsDao
-    ): RestaurantsDataRepository {
+    private val restaurantsDao: RestaurantsDao,
+): RestaurantsDataRepository {
 
     override suspend fun getRestaurants(accountId: Long): List<Restaurant> {
 
@@ -18,6 +19,7 @@ class RoomRestaurantsDataRepository @Inject constructor(
         return withContext(Dispatchers.IO){
             delay(1000)
             restaurantsDao.getRestaurants().map { entity ->
+                val isLiked = restaurantsDao.getRestaurantIsLiked(accountId, entity.id)
                 Restaurant(
                     id = entity.id,
                     name = entity.name,
@@ -26,7 +28,7 @@ class RoomRestaurantsDataRepository @Inject constructor(
                     deliveryTime = entity.deliveryTime,
                     discountPercentage = entity.discountPercentage,
                     restaurantLogo = RestaurantsDataRepository.LOGOS[entity.id.toInt()-1],
-                    isLiked = false
+                    isLiked = isLiked
                 )
             }
         }

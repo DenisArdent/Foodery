@@ -7,4 +7,6 @@ interface DishesDataRepository {
     fun getDishes(accountId: Long): Flow<List<DishDbEntity>>
 
     suspend fun changeDishesQuantity(accountId: Long,dishId: Long, increasing: Boolean)
+
+    suspend fun deleteDish(accountId: Long, dishId: Long)
 }
