@@ -8,6 +8,7 @@ import com.denisardent.common.SuccessResult
 import com.denisardent.common.entities.DishInfo
 import com.denisardent.common.entities.Restaurant
 import com.denisardent.domain.usecases.ChangeDishQuantityUseCase
+import com.denisardent.domain.usecases.ChangeRestaurantStateUseCase
 import com.denisardent.domain.usecases.GetCurrentIdUseCase
 import com.denisardent.domain.usecases.GetDishesUseCase
 import com.denisardent.domain.usecases.GetRestaurantsUseCase
@@ -24,33 +25,24 @@ class RestaurantViewModel @Inject constructor(
     private val getCurrentIdUseCase: GetCurrentIdUseCase,
     private val getRestaurantsUseCase: GetRestaurantsUseCase,
     private val getDishesUseCase: GetDishesUseCase,
-    private val changeDishQuantityUseCase: ChangeDishQuantityUseCase
+    private val changeDishQuantityUseCase: ChangeDishQuantityUseCase,
+    private val changeRestaurantStateUseCase: ChangeRestaurantStateUseCase
 ): ViewModel() {
     private val _state: MutableResultFlow<RestaurantState> = MutableStateFlow(PendingResult())
     val state: ResultFlow<RestaurantState> = _state.asStateFlow()
 
-/*    private val _restaurantInfo: MutableResultFlow<Restaurant> =  MutableStateFlow(PendingResult())
-    val restaurantInfo: ResultFlow<Restaurant> = _restaurantInfo.asStateFlow()*/
-
-
 
     suspend fun getCurrentRestaurant(id: Int){
         viewModelScope.launch{
-//            getDishesUseCase()
             try {
                 _state.tryEmit(
                     SuccessResult(
                         RestaurantState(
                             dishList = getDishesUseCase(),
-                            restaurantInfo = getRestaurantsUseCase(0)[id]
+                            restaurantInfo = getRestaurantsUseCase(getCurrentIdUseCase())[id]
                         )
                     )
                 )
-/*                _restaurantInfo.tryEmit(
-                    SuccessResult(
-                        getRestaurantsUseCase(0)[id]
-                    )
-                )*/
             } catch (e: Exception){
 //                _restaurantInfo.tryEmit(ErrorResult(e))
                 _state.tryEmit(ErrorResult(e))
@@ -58,11 +50,11 @@ class RestaurantViewModel @Inject constructor(
         }
     }
 
-/*    fun changeRestaurantState(isLiked: Boolean, restaurantId: Long){
+    fun changeRestaurantState(isLiked: Boolean, restaurantId: Long){
         viewModelScope.launch {
-            restaurantsRepository.changeRestaurantState(accountsRepository.getCurrentId(), restaurantId, isLiked)
+            changeRestaurantStateUseCase(isLiked, restaurantId)
         }
-    }*/
+    }
 
     fun onDishAdded(id: Int){
         viewModelScope.launch {

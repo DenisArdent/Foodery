@@ -49,6 +49,10 @@ class CartAdapter(
         if (v.id == R.id.button_min) listener.onDecreased(dishItem)
     }
 
+    fun getDishId(itemId: Int): Int{
+        return getItem(itemId).id
+    }
+
 
     class DishHolder(
         val binding: ItemDishBinding

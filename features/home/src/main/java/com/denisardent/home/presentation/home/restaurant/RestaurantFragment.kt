@@ -1,6 +1,7 @@
 package com.denisardent.home.presentation.home.restaurant
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -39,21 +40,22 @@ class RestaurantFragment: BaseFragment(R.layout.fragment_restaurant) {
             viewModel.getCurrentRestaurant(restaurantId.toInt()-1)
         }
 
-//        handleResult(viewModel.restaurantInfo)
+
 
         handleResult(viewModel.state)
 
 
-/*        binding.likeRestaurantCheckbox.setOnCheckedChangeListener { buttonView, isChecked ->
-            viewModel.changeRestaurantState(isChecked, (restaurantId+1).toLong())
-        }*/
+        binding.likeRestaurantCheckbox.setOnCheckedChangeListener { buttonView, isChecked ->
+            Log.d("RESTFRAGMENT", "$restaurantId")
+            viewModel.changeRestaurantState(isChecked, (restaurantId))
+        }
     }
 
     override fun <T> onSucceed(state: T) {
         val result = state as RestaurantState
 
         binding.likeRestaurantCheckbox.isEnabled = true
-        binding.likeRestaurantCheckbox.isChecked = result.restaurantInfo.isLiked
+        binding.likeRestaurantCheckbox.isChecked = state.restaurantInfo.isLiked
 
         binding.mainRestaurantName.text = result.restaurantInfo.name
         binding.mainRating.text = result.restaurantInfo.rating

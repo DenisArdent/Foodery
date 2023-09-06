@@ -31,4 +31,10 @@ class RoomDishesDataRepository @Inject constructor(
             }
         }
     }
+
+    override suspend fun deleteDish(accountId: Long, dishId: Long) {
+        withContext(Dispatchers.IO){
+            dishesDao.deleteDishDbEntity(accountId, dishId)
+        }
+    }
 }
