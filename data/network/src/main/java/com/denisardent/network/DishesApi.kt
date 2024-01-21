@@ -3,6 +3,6 @@ package com.denisardent.network
 import retrofit2.http.GET
 
 interface DishesApi {
-    @GET("v3/e561b1f8-3d4c-47f4-b936-8f896795e188")
+    @GET("0b1e1a6d-3bda-42d7-a0ea-402aeaf79906")
     suspend fun getDishes(): List<DishResponse>
 }

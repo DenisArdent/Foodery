@@ -30,4 +30,4 @@ class NetworkModule {
 
 }
 
-const val BASE_URL = "https://run.mocky.io/"
+const val BASE_URL = "https://run.mocky.io/v3/"
