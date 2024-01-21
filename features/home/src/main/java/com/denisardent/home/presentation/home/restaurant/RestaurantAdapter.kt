@@ -1,5 +1,6 @@
 package com.denisardent.home.presentation.home.restaurant
 
+import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.denisardent.common.entities.DishInfo
+import com.denisardent.home.R
 import com.denisardent.home.databinding.ItemDishinfoBinding
 
 class RestaurantAdapter(private val listener: Listener): ListAdapter<DishInfo, RestaurantAdapter.DishHolder>(ItemCallback), View.OnClickListener {
@@ -25,6 +27,7 @@ class RestaurantAdapter(private val listener: Listener): ListAdapter<DishInfo, R
 
         with(holder.binding){
             buttonAdd.tag = dishInfo
+            buttonAdd.text = holder.itemView.context.getString(R.string.cost_in_roubles, dishInfo.price)
             dishNameTv.text = dishInfo.name
             Glide
                 .with(root)
