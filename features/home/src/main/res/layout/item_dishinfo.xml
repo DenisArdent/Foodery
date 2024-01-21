@@ -36,7 +36,7 @@
         android:id="@+id/button_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add_in_cart"
+        tools:text="@string/cost_in_roubles"
         android:layout_marginHorizontal="10dp"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
