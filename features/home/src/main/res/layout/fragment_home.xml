@@ -7,18 +7,13 @@
     android:background="@color/extra_light"
     tools:context="com.denisardent.home.presentation.HomeFragment">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/top_horizontal_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent = "0.34" />
 
-    <ImageView
-        android:id="@+id/location_iv"
+    <ImageButton
+        android:id="@+id/location_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_location"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
         android:layout_marginTop="24dp"
         android:layout_marginStart="14dp"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
@@ -34,9 +29,17 @@
         android:textColor="@color/dark_primary"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintStart_toEndOf="@id/location_iv"
+        app:layout_constraintStart_toEndOf="@id/location_button"
         app:layout_constraintTop_toTopOf="parent"
         />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_horizontal_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent = "0.34" />
+
 
     <TextView
         android:id="@+id/popular_restaurants_tv"

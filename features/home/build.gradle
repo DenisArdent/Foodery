@@ -51,6 +51,7 @@ dependencies {
     implementation Libs.Android.NavigationUI
     implementation Libs.Android.NavigationFragment
     implementation Libs.Glide
+    implementation Libs.YandexMap
 
     implementation project(Modules.Data.Domain)
     implementation project(Modules.Core.Common)

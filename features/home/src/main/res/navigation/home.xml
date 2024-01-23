@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_restaurantFragment"
             app:destination="@id/restaurantFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
     <fragment
         android:id="@+id/restaurantFragment"
@@ -23,6 +26,11 @@
             android:name="restaurant_id"
             app:argType="long" />
     </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.denisardent.home.presentation.map.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" />
 
 
 </navigation>

@@ -32,12 +32,15 @@ class HomeFragment: BaseFragment(R.layout.fragment_home) {
             override fun onClickItem(restaurant: Restaurant) {
                 findNavController().navigate(R.id.restaurantFragment, bundleOf(
                     "restaurant_id" to restaurant.id
-                )
-                )
+                ))
             }
         })
 
         handleResult(viewModel.restaurantsList)
+
+        binding.locationButton.setOnClickListener {
+            findNavController().navigate(R.id.mapFragment)
+        }
 
         binding.tryAgainButton.setOnClickListener {
         //    viewModel.tryAgain()
